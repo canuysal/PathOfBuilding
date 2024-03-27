@@ -769,14 +769,14 @@ function GemSelectClass:OnKeyDown(key, doubleClick)
 	local x, y = self:GetPos()
 	local width, height = self:GetSize()
 	local cursorX, cursorY = GetCursorPos()
-	if cursorX > (x + width - 18) then
+	if cursorX > (x + width - 18) and not self.dropped then
 		-- clear cache if last sort was not Support
 		if self.sortGemsBy ~= "support" then
 			self.sortCache = nil
 		end
 		self.sortGemsBy = "support"
 		self.bypassSort = false
-	elseif (cursorX > (x + width - 40) and cursorX < (cursorX + width - 20)) then
+	elseif (cursorX > (x + width - 40) and cursorX < (cursorX + width - 20)) and not self.dropped then
 		-- clear cache if last sort was not Active
 		if self.sortGemsBy ~= "active" then
 			self.sortCache = nil
